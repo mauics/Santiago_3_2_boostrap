@@ -5,23 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gundam Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #303030;
-            color: #ffffff;
+            background: url('assets/spave.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Your Stylish Font', sans-serif;
+            color: #fff;
         }
 
         .navbar {
-            background-color: #0075b7;
+    background-color: rgba(0, 117, 183, 0.8); 
+    transition: background-color 0.3s;
         }
+        .navbar.fixed-top {
+    background-color: rgba(0, 117, 183, 1); 
+}
 
         .navbar-brand img {
             width: 150px;
         }
 
-        .card {
-            background-color: #111;
+        .btn {
+            background: linear-gradient(45deg, #0075b7, #00a1e5);
             color: #fff;
+            border-radius: 50px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #00a1e5, #0075b7);
+            transform: scale(1.05);
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
         .card-title {
@@ -31,16 +52,49 @@
         .card-text {
             color: #aaa;
         }
-
         .card-img {
-            height: 200px; /* Set a fixed height for the card images */
-            object-fit: cover; /* Ensure the image covers the entire height */
+            height: 500px;
+            object-fit: cover;
+        }
+
+        #bgm-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0075b7;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 999; 
+            border-radius: 50%; 
+        }
+
+        /* bgm icon */
+        #bgm-toggle i {
+            font-size: 20px; 
         }
     </style>
+    <audio id="bgm" autoplay loop>
+      <source src="assets/Unicorn.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script>
+      function toggleBGM() {
+          var audio = document.getElementById("bgm");
+          if (audio.paused) {
+              audio.play();
+          } else {
+              audio.pause();
+          }
+      }
+  </script>
 </head>
 <body>
+  <button id="bgm-toggle" onclick="toggleBGM()"><i class="fas fa-volume-up"></i></button>
+
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -58,8 +112,8 @@
                                 Products
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Gundam Model 1</a></li>
-                                <li><a class="dropdown-item" href="#">Gundam Model 2</a></li>
+                                <li><a class="dropdown-item" href="#">Perfect Grade Kits</a></li>
+                                <li><a class="dropdown-item" href="#">Master Grade Kits</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Accessories</a></li>
                             </ul>
@@ -85,10 +139,10 @@
                         <div id="carouselProduct1" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="assets/strike free.jpg" class="d-block w-100" alt="Product 1 Image 1">
+                                    <img src="assets/strike free.jpg" class="d-block w-100 card-img" alt="Product 1 Image 1">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/strikebox.jpg" class="d-block w-100" alt="Product 1 Image 2">
+                                    <img src="assets/strikebox.jpg" class="d-block w-100 card-img" alt="Product 1 Image 2">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselProduct1" role="button" data-bs-slide="prev">
@@ -103,7 +157,7 @@
                         <div class="card-body">
                           <h5 class="card-title">MG Strike Freedom Gundam Seed Destiny 1/100</h5>
                           <p class="card-text">High-quality Gundam model kit for enthusiasts.</p>
-                            <p class="card-text"><strong>Price: $49.99</strong></p>
+                            <p class="card-text"><strong>Price: ₱3,400</strong></p>
                             <a href="#" class="btn btn-primary">Add to Cart</a>
                         </div>
                     </div>
@@ -113,10 +167,10 @@
                       <div id="carouselProduct2" class="carousel slide" data-bs-ride="carousel">
                           <div class="carousel-inner">
                               <div class="carousel-item active">
-                                  <img src="assets/winged.jpg" class="d-block w-100" alt="Product 2 Image 1">
+                                  <img src="assets/winged.jpg" class="d-block w-100 card-img" alt="Product 2 Image 1">
                               </div>
                               <div class="carousel-item">
-                                  <img src="assets/edw.jpg" class="d-block w-100" alt="Product 2 Image 2">
+                                  <img src="assets/edw.jpg" class="d-block w-100 card-img" alt="Product 2 Image 2">
                               </div>
                           </div>
                           <a class="carousel-control-prev" href="#carouselProduct2" role="button" data-bs-slide="prev">
@@ -131,7 +185,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Gundam Mg Scale Model Wing Zero Ew (Ver.Ka) 1/100</h5>
                         <p class="card-text">Another amazing Gundam model kit for collectors.</p>
-                          <p class="card-text"><strong>Price: $49.99</strong></p>
+                          <p class="card-text"><strong>Price: ₱3,600</strong></p>
                           <a href="#" class="btn btn-primary">Add to Cart</a>
                       </div>
                   </div>
@@ -140,11 +194,11 @@
                 <div class="card">
                     <div id="carouselProduct3" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="assets/quanti.jpg" class="d-block w-100" alt="Product 3 Image 1">
+                            <div class="carousel-item active"> 
+                                <img src="assets/quanti.jpg" class="d-block w-100 card-img" alt="Product 3 Image 1">
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/qntt.jpg" class="d-block w-100" alt="Product 3 Image 2">
+                                <img src="assets/qntt.jpg" class="d-block w-100 card-img" alt="Product 3 Image 2">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselProduct3" role="button" data-bs-slide="prev">
@@ -159,12 +213,11 @@
                     <div class="card-body">
                       <h5 class="card-title">MG 00 QAN[T] Full Saber 1/100</h5>
                       <p class="card-text">Enhance your Gundam models with these accessories.</p>
-                        <p class="card-text"><strong>Price: $49.99</strong></p>
+                        <p class="card-text"><strong>Price: ₱2,800</strong></p>
                         <a href="#" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
             </div>
-                <!-- Add more product cards with carousels as needed -->
             </div>
         </div>
     </div>
